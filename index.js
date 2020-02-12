@@ -7,6 +7,13 @@ inquirer
     {
       message: "What's your GitHub username?",
       name: "username",
+      validate: function(value){
+        var pass = (value !=="");
+          if (pass){
+              return true
+          }
+          return 'Please enter a username'    
+      }
     },
     {
       message: "What's the name of your project?",
