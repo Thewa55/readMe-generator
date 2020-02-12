@@ -40,5 +40,12 @@ inquirer
       name: "license"
     }
   ]).then(function(response){
-      console.log (response)
+      const queryUrl = `https://api.github.com/users/${response.username}/repos?per_page=100`
+      axios
+    .get(queryUrl)
+    .then(function(userinfo){
+      console.log(userinfo.data[0].owner.avatar_url)
+      console.log(response)
+    })
   })
+
