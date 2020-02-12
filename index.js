@@ -44,8 +44,15 @@ inquirer
       axios
     .get(queryUrl)
     .then(function(userinfo){
-      console.log(userinfo.data[0].owner.avatar_url)
       console.log(response)
+      const READMEtext = 
+      `<h1>#${response.projectname}</h1><hr><br>
+      <h4>#description</h4> 
+      <p>${response.description}</p>`
+      console.log(userinfo.data[0].owner.avatar_url)
+      console.log(response.projectname)
+      fs.writeFile("README.md", READMEtext, function(err){
+    })
     })
   })
 
