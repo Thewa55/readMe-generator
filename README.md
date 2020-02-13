@@ -1,5 +1,6 @@
 # ReadMe Generator
 <img src="https://img.shields.io/badge/Made%20with-100%25%20JS-orange">
+
 ## Description
 This generator helps you make a readme using the template shown below
 ## Table of content
