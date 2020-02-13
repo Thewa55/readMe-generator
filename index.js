@@ -45,7 +45,7 @@ inquirer
     .get(queryUrl)
     .then(function(userinfo){
       var icon = userinfo.data[0].owner.avatar_url
-      var shield = "https://img.shields.io/badge/Made with-100% JS-orange"
+      var shield = "https://img.shields.io/badge/Made%20with-100%25%20JS-orange"
 const READMEtext = 
 `# ${response.projectname}<hr><br>
 ## Description
