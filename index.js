@@ -51,10 +51,10 @@ const READMEtext =
 ## Description
 ${response.description}
 ## Table of content
-[#Installation](#Installation)
-[#Usage](#Usage)
-[#Credits](#Credits)
-[#License](#License)
+*[#Installation](#Installation)<br>
+*[#Usage](#Usage)<br>
+*[#Credits](#Credits)<br>
+*[#License](#License)<br>
 ## #Installation
 ${response.installation}
 ## #Usage
