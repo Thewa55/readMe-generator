@@ -44,13 +44,27 @@ inquirer
       axios
     .get(queryUrl)
     .then(function(userinfo){
-      console.log(response)
-      const READMEtext = 
-      `<h1>#${response.projectname}</h1><hr><br>
-      <h4>#description</h4> 
-      <p>${response.description}</p>`
-      console.log(userinfo.data[0].owner.avatar_url)
-      console.log(response.projectname)
+      var icon = userinfo.data[0].owner.avatar_url
+
+const READMEtext = 
+`# ${response.projectname}<hr><br>
+## Description
+${response.description}
+## Table of content
+[#Installation](#Installation)
+[#Usage](#Usage)
+[#Credits](#Credits)
+[#License](#License)
+## #Installation
+${response.installation}
+## #Usage
+${response.usage}
+## #Credits
+${response.credits}
+## #License
+${response.license}<br>
+<img src="${icon}">`
+
       fs.writeFile("README.md", READMEtext, function(err){
     })
     })
