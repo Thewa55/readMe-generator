@@ -45,16 +45,16 @@ inquirer
     .get(queryUrl)
     .then(function(userinfo){
       var icon = userinfo.data[0].owner.avatar_url
-
+      var shield = "https://img.shields.io/badge/Made with-100% JS-orange"
 const READMEtext = 
 `# ${response.projectname}<hr><br>
 ## Description
 ${response.description}
 ## Table of content
-*[#Installation](#Installation)<br>
-*[#Usage](#Usage)<br>
-*[#Credits](#Credits)<br>
-*[#License](#License)<br>
+[#Installation](#Installation)<br>
+[#Usage](#Usage)<br>
+[#Credits](#Credits)<br>
+[#License](#License)<br>
 ## #Installation
 ${response.installation}
 ## #Usage
@@ -63,10 +63,10 @@ ${response.usage}
 ${response.credits}
 ## #License
 ${response.license}<br>
-<img src="${icon}">`
+<img src="${shield}<br><br>
+<img src="${icon}" style="max-width: 25%;">`
 
       fs.writeFile("README.md", READMEtext, function(err){
     })
     })
   })
-
