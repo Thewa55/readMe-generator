@@ -47,7 +47,8 @@ inquirer
       var icon = userinfo.data[0].owner.avatar_url
       var shield = "https://img.shields.io/badge/Made%20with-100%25%20JS-orange"
 const READMEtext = 
-`# ${response.projectname}<hr><br>
+`# ${response.projectname}
+<img src="${shield}">
 ## Description
 ${response.description}
 ## Table of content
@@ -55,6 +56,7 @@ ${response.description}
 [#Usage](#Usage)<br>
 [#Credits](#Credits)<br>
 [#License](#License)<br>
+[#Contacts](#Contacts)
 ## #Installation
 ${response.installation}
 ## #Usage
@@ -62,9 +64,11 @@ ${response.usage}
 ## #Credits
 ${response.credits}
 ## #License
-${response.license}<br>
-<img src="${shield}<br><br>
-<img src="${icon}" style="max-width: 25%;">`
+${response.license}
+## #Contacts
+If you have any further questions or comments, please dont hesitate to contact me at: <kinwai.lam730@gmail.com>
+<br><br>
+<img src="${icon}" style="max-width: 25%"><br>`
 
       fs.writeFile("README.md", READMEtext, function(err){
     })
