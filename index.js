@@ -69,9 +69,12 @@ ${response.license}
 ## #Contacts
 If you have any further questions or comments, please dont hesitate to contact me at: <kinwai.lam730@gmail.com>
 <br><br>
-<img src="${icon}" style="max-width: 25%"><br>`
+<img src="${icon}" width="200"><br>`
 
       fs.writeFile("README.md", READMEtext, function(err){
-    })
+      })
     })
   })
+  .catch(function(err) {
+    console.log(err);
+  });
