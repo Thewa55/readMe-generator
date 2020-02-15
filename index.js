@@ -2,8 +2,9 @@ const fs = require("fs");
 const axios = require("axios");
 const inquirer = require("inquirer");
 
-inquirer
-  .prompt([
+
+function promptuser(){
+  return inquirer.prompt([
     {
       message: "What's your GitHub username?",
       name: "username",
@@ -14,6 +15,10 @@ inquirer
           }
           return 'Please enter a username'    
       }
+    },
+    {
+      message: "What's your link for a badge?",
+      name: "badge",
     },
     {
       message: "What's the name of your project?",
@@ -39,16 +44,24 @@ inquirer
       message: "Do you have any license on your project?",
       name: "license"
     }
-  ]).then(function(response){
-      const queryUrl = `https://api.github.com/users/${response.username}/repos?per_page=100`
-      axios
+  ])
+}
+
+async function githubResp(response){
+  console.log(response.username)
+  const queryUrl =`https://api.github.com/users/${response.username}/repos?per_page=100`
+  const githubResponse = await axios
     .get(queryUrl)
-    .then(function(userinfo){
-      var icon = userinfo.data[0].owner.avatar_url
-      var shield = "https://img.shields.io/badge/Made%20with-100%25%20JS-orange"
-const READMEtext = 
-`# ${response.projectname}
-<img src="${shield}">
+    let iconURL = githubResponse.data[0].owner.avatar_url
+      // var shield = "https://img.shields.io/badge/Made%20with-100%25%20JS-orange"
+    return iconURL
+}
+
+
+function readmeText(response, icon){
+console.log(icon + "Icon inside")
+return  `# ${response.projectname}
+<img src="${response.badge}">
 
 ## Description
 ${response.description}
@@ -70,11 +83,21 @@ ${response.license}
 If you have any further questions or comments, please dont hesitate to contact me at: <kinwai.lam730@gmail.com>
 <br><br>
 <img src="${icon}" width="200"><br>`
+}
+  
+async function readmeGen(){
+  try{
+    const response = await promptuser()
+    const icon = await githubResp(response)
+    const readmeMD = await readmeText(response, icon)
+    console.log(readmeMD)
+    fs.writeFile("README.md", readmeMD,function(err){
 
-      fs.writeFile("README.md", READMEtext, function(err){
-      })
     })
-  })
-  .catch(function(err) {
-    console.log(err);
-  });
+  }
+  catch(err){
+    console.log(err)
+  }
+}
+
+readmeGen()
